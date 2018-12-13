@@ -25,6 +25,7 @@ requirements:
     - flex
     - bison
     - m4
+    - make
 
 test:
   commands:
