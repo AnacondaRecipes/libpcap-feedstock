@@ -22,10 +22,13 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
-    - flex
-    - bison
-    - m4
-    - make
+    - autoconf              # [not win]
+    - flex                  # [not win]
+    - bison                 # [not win]
+    - m4                    # [not win]
+    - make                  # [not win]
+    - pkg-config            # [not win]
+    - git
 
 test:
   commands:
