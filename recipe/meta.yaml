@@ -1,6 +1,6 @@
 {% set name = "libpcap" %}
-{% set version = "1.9.1" %}
-{% set sha256 = "635237637c5b619bcceba91900666b64d56ecb7be63f298f601ec786ce087094" %}
+{% set version = "1.10.1" %}
+{% set sha256 = "ed285f4accaf05344f90975757b3dbfe772ba41d1c401c2648b7fa45b711bdd4" %}
 
 package:
   name: {{ name|lower }}
@@ -10,6 +10,8 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: http://www.tcpdump.org/release/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
+  patches:
+    - fix-install.patch  # [osx]
 
 build:
   number: 0
@@ -27,6 +29,7 @@ requirements:
     - m4
     - make
     - libtool
+    - patch
 
 test:
   commands:
