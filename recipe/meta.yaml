@@ -1,21 +1,20 @@
 {% set name = "libpcap" %}
-{% set version = "1.10.1" %}
-{% set sha256 = "ed285f4accaf05344f90975757b3dbfe772ba41d1c401c2648b7fa45b711bdd4" %}
+{% set version = "1.11.0" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: http://www.tcpdump.org/release/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: 596389bc8560ea027dff9db8aaf6c173d992366d9aef4baf5d7c6d180b4d49ad
   patches:
     - fix-install.patch  # [osx]
 
 build:
   number: 0
-  skip: True  # [win]
+  skip: true  # [win]
   run_exports:
     # https://abi-laboratory.pro/?view=timeline&l=libpcap
     # Symbol removal at minor bump
@@ -23,6 +22,7 @@ build:
 
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - flex
     - bison
@@ -38,12 +38,12 @@ test:
     - test -f $PREFIX/include/pcap.h      # [unix]
 
 about:
-  home: www.tcpdump.org
+  home: https://www.tcpdump.org
   license: BSD 3-Clause
   license_family: BSD
   license_file: LICENSE
   summary: 'the LIBpcap interface to various kernel packet capture mechanism'
-  doc_url: http://www.tcpdump.org/#documentation
+  doc_url: https://www.tcpdump.org/#documentation
   dev_url: https://github.com/the-tcpdump-group/libpcap
 
 extra:
