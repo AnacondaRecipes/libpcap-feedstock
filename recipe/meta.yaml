@@ -7,7 +7,7 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: http://www.tcpdump.org/release/{{ name }}-{{ version }}.tar.gz
+  url: https://www.tcpdump.org/release/{{ name }}-{{ version }}.tar.gz
   sha256: 596389bc8560ea027dff9db8aaf6c173d992366d9aef4baf5d7c6d180b4d49ad
   patches:
     - fix-install.patch  # [osx]
@@ -29,7 +29,6 @@ requirements:
     - m4
     - make
     - libtool
-    - patch
 
 test:
   commands:
@@ -39,10 +38,13 @@ test:
 
 about:
   home: https://www.tcpdump.org
-  license: BSD 3-Clause
+  license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
   summary: 'the LIBpcap interface to various kernel packet capture mechanism'
+  description: |
+    System-independent interface for user-level packet capture.
+    libpcap provides a portable framework for low-level network monitoring
   doc_url: https://www.tcpdump.org/#documentation
   dev_url: https://github.com/the-tcpdump-group/libpcap
 
